@@ -1,0 +1,159 @@
+- Class: meta
+  Course: Statistik I
+  Lesson: Übung Termin I
+  Author: Ulf Mertens
+  Type: Standard
+  Organization: University of Heidelberg
+  Version: 2.2.16
+
+
+- Class: text
+  Output: In dieser Einheit werden wir die Grundlagen von R widerholen. Ihr solltet einen Großteil der Fragen beantworten können. Wenn ihr die Antwort nicht wisst, könnt ihr über "play()" pausieren udn selbst versuchen die Lösung zu finden. Wenn das ohne Erfolg ist, dann findet ihr zu jeder Frage einen Hint, in dem etwas genauer erklärt wird, wie ihr vorgehen müsst. 
+
+
+- Class: text
+  Output: Dann fangen wir mal an...
+
+- Class: cmd_question
+  Output:. Erstellt einen Vektor mit den Zahlen 1,2 und 3. 
+  CorrectAnswer: c(1,2,3)
+  AnswerTests: omnitest(correctExpr='c(1,2,3)')
+  Hint: Möchten wir mehrere Zahlen in einen Vektor speichern, müssen wir das über den 'c()'-Befehl machen, wobei die einzelnen Zahlen durch ein Komme getrennt werden müssen. Das "c" steht hier für combine. So sollte es aussehen: 'c(1,2,3)'.
+
+- Class: cmd_question
+  Output: Erstellt nun bitte einen Vektor mit zehn 1en, zehn 2en und zehn 3en.. Versucht das mithilfe einer Funktion, also bitte nicht alle Zahlen eingeben.
+  CorrectAnswer: rep(c(1,2,3),each=10)
+  AnswerTests: omnitest(correctExpr='rep(c(1,2,3),each=10)')
+  Hint: Glücklicherweise können wir uns das Tippen sparen, hierfür gibt es eine Funktion, die uns die Arbeit weitgehend abnimmt. Wir werden im Laufe des Semesters noch mehr über Funktionen lernen, aber vorerst verwenden wir sie einfach. Zurück zu unserem Vektor: Die Funktion 'rep' steht für repeat. Möchten wir die Zahlen 1 und 2 jeweils 5-mal wiederholen, schreiben wir: 'rep(c(1,2),each=5)'. Wir sagen R: Nimm die Zahl 1, und schreibe sie 5 mal, nimm dann die Zahl 2 und schreibe sie 5 mal. Die Lösung hier also wäre: 'rep(c(1,2,3),each=10)'.
+
+- Class: cmd_question
+  Output: Soweit so gut. Was nun, wenn wir damit weiterrechnen möchten? Also z.B jede Zahl um einen Wert erhöhen? (Warum auch immer das von Interesse sein sollte). Es ist lästig, jedes Mal aufs Neue den Vektor hinschreiben zu müssen, daher speichert den Vektor in eine Variable namens 'y' ab. 
+  CorrectAnswer: y <- rep(c(1,2,3),each=10)
+  AnswerTests: omnitest(correctExpr='y <- rep(c(1,2,3),each=10)')
+  Hint: Das funktioniert über den sog. assignment-Operator '<-'. Wenn man die Zahl 1 einer Variable 'x' zuordnen möchte, schreibt man: 'x <- 1'. Den Vektor, der mit rep() erstellt wurde, ordnen wir der Variable 'y' zu, so: 'y <- rep(c(1,2,3),each=10)'
+
+- Class: cmd_question
+  Output: Very well, jetzt addieren wir jede Zahl des Vektors 'y' mit 1 und speichern das Ergebnis in eine Variable 'k'.
+  CorrectAnswer: k <- y + 1
+  AnswerTests: omnitest(correctExpr='k <- y + 1')
+  Hint: In R kann man das auf zwei Arten machen, wir wählen (voerst) die einfache Variante. Wir addieren schlicht und einfach 1 und speichern das Ergebnis in eine neue Variable ab, die wir 'k' nennen. Stellt euch vor 'y' ist nur eine Zahl: 'k <- y + 1'
+
+- Class: cmd_question
+  Output: Lasst euch die Variable 'k' in der Konsole ausgeben
+  CorrectAnswer: k
+  AnswerTests: omnitest(correctExpr='k')
+  Hint: Einfach k eingeben und Enter drücken.
+
+- Class: text
+  Output: Sehr gut, wie ihr gesehen habt wusste R, dass wir *jede* Zahl um eins erhöhen wollten. 
+- Class: text
+  Output: Nun kann es doch sein, dass dieses Verhalten nicht erwünscht ist. Es sollen z.B nicht alle Werte um eins erhöht werden, sondern nur ein einziger Wert. Wir müssen also auf bestimmte Werte innerhalb des Vektors zugreifen können. Auf geht's....
+
+- Class: cmd_question
+  Output:. Lasst euch den achten Wert des Vektors 'y' ausgeben.
+  CorrectAnswer: y[8]
+  AnswerTests: omnitest(correctExpr='y[8]')
+  Hint: Hierfür gibt es die eckigen Klammern (''[ ]''). Um beispielsweise den vierten Wert eines Vektors 'v' aufzurufen, schreibt man 'v[4]'. Die Antwort lautet also: 'y[8]'
+
+- Class: cmd_question
+  Output: Gelegentlich möchte man bestimmte Werte durch andere ersetzen. Hierfür ruft man einen bestimmten Wert auf (mithilfe der eckigen Klammern), und weist diesem Wert einen Neuen zu. Das funktioniert genauso wie das Zuweisen einer Zahl zu einer Variable, also mit dem assignment-operator bzw. Zuweisungsoperator ('<-'). Ersetzt nun den achten Wert des Vektors 'y' mit der Zahl 8. 
+  CorrectAnswer: y[8] <- 8
+  AnswerTests: omnitest(correctExpr='y[8] <- 8')
+  Hint: So sollte der Befehl aussehen: 'y[8] <- 8'
+
+- Class: text
+  Output: Wir können jetzt auf einzelne Werte zugreifen und somit auch das Problem lösen, statt zu allen Werten die Zahl 1 zu addieren, das nur für einen bestimmten Wert zu tun. Du kannst nun gerne eine kurze Pause einlegen mit 'play()' und dich selbst testen, ob du es denn wirklich kannst.
+
+- Class: cmd_question
+  Output: Einzelne Werte können wir inzwischen aufrufen und auch verändern, wie ist es aber mit mehreren Werten gleichzeitig? Zum Beispiel würden wir uns gerne die ersten drei Werte des Vektors 'y' anzeigen lassen? Ruft nun die ersten drei Werte von 'y' auf:
+  CorrectAnswer: y[c(1,2,3)]
+  AnswerTests: omnitest(correctExpr='y[c(1,2,3)]')
+  Hint: Denkt hierbei an die 'c()'-Funktion zum Erstellen von Vektoren. Wir schreiben innerhalb der eckigen Klammern den Vektor 'c(1,2,3)', also so: 'y[c(1,2,3)]'
+
+- Class: cmd_question
+  Output: Das ist ja alles ganz nett, was aber wenn ich die Zahlen 1 bis 100 eines Vektors mit 1000 Zahlen verändern möchte? Das dauert doch viel zu lang! Ich kann euch beruhigen, das tut es nicht., sofern man weiss wie. Ersetzt die Zahl 1 im Vektor 'y', also die ersten zehn Zahlen durch Nullen (bitte nicht die Zahlen 1 bis 10 schreiben).
+  CorrectAnswer: y[1:10] <- 0
+  AnswerTests: omnitest(correctExpr='y[1:10] <- 0')
+  Hint: Der Doppelpunkt ':' ist hier unser Freund. Falls ihr Hilfe zur Benutzung des ':' benötigt, ruft die Hilfe auf über "help(':')". Die Antwort zur Frage: 'y[1:10] <- 0'
+
+- Class: text
+  Output: Wir wollen uns jetzt einigen wichtigen Funktionen widmen, mit denen sich statistische Kennwerte berechnen lassen. Wir beginnen mit Variablen mit Nominalskalenniveau (qualitativ), d.h. solchen, bei denen wir nur sagen können ob zwei Werte gleich oder ungleich sind. Das beste Beispiel ist hierfür das Geschlecht. Wenn eine Person weiblich ist, weisen wir ihr den Wert 1 zu, wenn sie männlich ist den Wert 0. Ihr seht oben rechts in RStudio eine Variable namens 'sex', die nach diesem Muster erstellt wurde.
+
+- Class: mult_question
+  Output: Zum jetzigen Zeitpunkt brauchen wir für solche Variablen nur eine Funktion namens 'table()'. Wofür ist die Funktion gut? Schaut hierfür in die Hilfe zu der Funktion. Sie gibt an...
+  AnswerChoices: wie häufig beide Werte vorkommen; welcher Wert häufiger vorkommt; aus welchen Werten der Vektor besteht
+  CorrectAnswer: wie häufig beide Werte vorkommen
+  AnswerTests: omnitest(correctVal= 'wie häufig beide Werte vorkommen')
+  Hint: Schreibt in die Konsole: 'table(sex)'' und seht selbst
+
+- Class: text
+  Output: Für Variablen vom Typ 'metrisch' (Intervallskalenniveau) macht die 'table()' Funktion keinen Sinn. Nehmen wir als Beispiel Altersangaben. Es hilft uns wenig zu wissen, dass drei der 20 Personen 19 Jahre alt sind. Wir möchten eher wissen, wie der Altersdurchschnitt ist und wie alt (jung) die älteste (jüngste) Person ist. Interessant wäre auch die Standardabweichung bzw. Varianz.
+
+
+- Class: cmd_question
+  Output: Im Fenster rechts oben seht ihr neben den Variablen 'y', 'k' und 'sex' noch eine weitere Variable 'age'. Um zu wissen, wie viele Personen da nach ihrem Alter befragt wurden, benötigen wir die Länge des Vektors. Lass dir nun die Länge des Vektors ausgeben:
+  CorrectAnswer: length(age)
+  AnswerTests: omnitest(correctExpr='length(age)')
+  Hint: Im Engl. 'length', also: 'length(age)'.
+
+- Class: cmd_question
+  Output: Alles klar, und wie ist der Altersdurchschnitt? 
+  CorrectAnswer: mean(age)
+  AnswerTests: omnitest(correctExpr='mean(age)')
+  Hint: Diesmal übergeben wir der Funktion 'mean' den Vektor in dem alle Altersangaben gespeichert sind, 'mean(age)'.
+
+- Class: cmd_question
+  Output: Wie alt ist die jüngste Person? 
+  CorrectAnswer: min(age)
+  AnswerTests: omnitest(correctExpr='min(age)')
+  Hint: Das minimale Alter erhält man mit der 'min()'-Funktion.
+
+- Class: cmd_question
+  Output: Wie lautet die Standardabweichung?
+  CorrectAnswer: sd(age)
+  AnswerTests: omnitest(correctExpr='sd(age)')
+  Hint: Im Engl. 'standard deviation', also 'sd(age)'.
+
+- Class: text
+  Output: Stellt euch vor, ihr macht eine Online-Umfrage bei der nur Personen, die älter als 16 Jahre sind, teilnehmen dürfen. Nach der Erhebung der Daten wollt ihr feststellen, wie viele Personen angegeben haben, dass sie 16 oder jünger sind. Die Idee ist dabei folgende: Wir überprüfen zunächst jede Altersangabe und geben der Person den Wert 'FALSE' wenn sie älter als 16 ist, und 'TRUE' wenn sie 16 oder jünger ist. 
+
+- Class: cmd_question
+  Output:. Erzeuge einen Vektor, der den Wert 'TRUE' enthält, wenn die Person 16 Jahre oder jünger ist, 'FALSE' wenn nicht.
+  CorrectAnswer: age<=16
+  AnswerTests: omnitest(correctExpr='age<=16')
+  Hint: In R können wir überprüfen, ob eine Zahl gleich einer anderen ist durch ein doppeltes Gleichheitszeichen ('=='). '1==0' gibt uns den Wert 'FALSE', denn 1 ist nicht gleich 0. Ein "Kleiner-Gleich"-Zeichen schreiben wir so: '<='. Genau wie der der Addition einer Zahl zu jedem Element eines Vektors schreiben wir hier statt einer einzelnen Zahl einen Vektor, so: 'age<=16'. Das erzeugt einen Vektor derselben Länge wie 'age' mit Werten 'FALSE' oder 'TRUE'.
+
+- Class: cmd_question
+  Output: Wenn wir jetzt alle 'TRUE' zählen, haben wir unser gewünschtes Ergebnis, nämlich wie viele Personen 16 oder jünger sind. Auf geht's:
+  CorrectAnswer: sum(age<=16)
+  AnswerTests: omnitest(correctExpr='sum(age<=16)')
+  Hint: 'TRUE' verhält sich wie eine '1' und 'FALSE' wie eine '0'. Das kommt uns zugute, denn jetzt können wir einfach die Summe dieses Vektors mit lauter 'TRUE' und 'FALSE' berechnen. Die Funktion heisst 'sum()'. Lösung: 'sum(age<=16)'
+
+- Class: text
+  Output: Die letzte Aufgabe ist bekanntlich die Schwerste. Wir wollen nun alle Personen, die 16 oder jünger sind aus unserem Vektor entfernen. Ok, und welche Personen sind 16 oder jünger? Bislang wissen wir nur wie viele? Das müssen wir zuerst klären.
+
+- Class: cmd_question
+  Output: Lasst euch diejenigen Personen ausgeben, die 16 oder jünger sind. Alternativ heisst die Frage: Lasst euch die Stellen des Vektors 'age' ausgeben, für die das Kriterium 16 oder jünger erfüllt ist, die also ein 'TRUE' erhalten. Speichert das Ergebnis bitte in den Vektor 'sixteen'.
+  CorrectAnswer: sixteen <- which(age<=16)
+  AnswerTests: omnitest(correctExpr='sixteen <- which(age<=16)')
+  Hint: Die Funktion hierfür heisst 'which()'. Ihr schreibt also: 'sixteen <- which(age >=16)'.
+
+- Class: cmd_question
+  Output: Nun, da wir wissen wen wir nicht mehr in unserem Ursprungsvektor 'age' haben möchten, können wir fortfahren und die Personen entfernen. Der 'neue' Vektor 'age' sollte dann nicht mehr die Personen beinhalten.
+  CorrectAnswer: age <- age[-sixteen]
+  AnswerTests: omnitest(correctExpr='age <- age[-sixteen]')
+  Hint: Genauso wie wir bestimmte Werte eines Vektors aufrufen können, können wir diese auch entfernen. Wir überschreiben 'age', das sieht so aus: 'age <- age[-sixteen]'. 
+
+- Class: text
+  Output: Zugegeben, das war nicht ganz einfach. Man bekommt Routine mit der Zeit. Immer wenn das Stichwort "entfernen" fällt, denkt automatisch an das Minuszeichen ("-"). 
+
+- Class: text
+  Output: Well done, ihr habt es geschafft! Auch wenn ihr nicht alles auf Anhieb wusstet, das ist überhaupt kein Problem. Wer soll sich auch von jetzt auch nachher die ganzen Funktionen merken?  Wie so oft lautet das Motto: Übung macht den Meister. Ihr werdet schnell merken, wie ihr bei bestimmten Aufgaben besser werdet. 
+
+
+
+
+
+
+  
+
