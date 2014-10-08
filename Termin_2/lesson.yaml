@@ -1,0 +1,16 @@
+- Class: meta
+  Course: Statistik I
+  Lesson: Termin 2
+  Author: Ulf Mertens
+  Type: Standard
+  Organization: University of Heidelberg
+  Version: 2.2.16
+
+- Class: text
+  Output: The simplest and most common data structure in R is the vector.
+
+
+
+
+
+

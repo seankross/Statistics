@@ -1,0 +1,38 @@
+- Class: meta
+  Course: Statistik_I
+  Lesson: Termin_2
+  Author: Ulf Mertens
+  Type: Standard
+  Organization: University of Heidelberg
+  Version: 2.2.16
+
+- Class: text
+  Output: In dieser Session werden wir uns mit Data Frames
+  beschäftigen und wie wir einfache Berechnungen daran vornehmen können.
+
+
+- Class: cmd_question
+  Output: In der Arbeitsumgebung findet ihr zwei Vektoren namens
+  'X1' und 'X2'. Fügt beide Vektoren spaltenweise zusammen und nennt
+  das neue Objekt 'mat'.
+  CorrectAnswer: mat <- cbind(X1,X2)
+  AnswerTests: omnitest(correctExpr='mat <- cbind(X1,X2)')
+  Hint: Spaltenweise zusammenfügen geht über 'cbind()', was wiederum
+  für column bind steht. 
+
+- Class: text
+  Output: Das neue Objekt 'mat' ist eine Matrix. Das überprüfen wir
+  mit class(mat).
+
+- Class: cmd_question
+  Output: Bevor wir fortfahren wollen wir aus der Matrix noch einen
+  Date Frame machen. Wir überschreiben hierfür 'mat'. 
+  CorrectAnswer: mat <- as.data.frame(mat)
+  AnswerTests: omnitest(correctExpr='mat <- as.data.frame(mat)')
+  Hint: Mit 'as.data.frame' können wir aus einer Matrix einen Data
+  Frame machen. Also: 'mat <- as.data.frame(mat)'.
+
+
+
+
+
