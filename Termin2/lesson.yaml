@@ -1,0 +1,10 @@
+- Class: meta
+  Course: Statistics
+  Lesson: Termin2
+  Author: your name goes here
+  Type: Standard
+  Organization: your organization's name goes here
+  Version: 2.2.16
+  
+- Class: text
+  Output: Termin2
