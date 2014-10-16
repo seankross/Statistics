@@ -10,9 +10,11 @@
 - Class: text
   Output: In dieser Einheit werden wir die Grundlagen von R widerholen. Ihr solltet einen Großteil der Fragen beantworten können. Wenn ihr die Antwort nicht wisst, könnt ihr über "play()" pausieren udn selbst versuchen die Lösung zu finden. Wenn das ohne Erfolg ist, dann findet ihr zu jeder Frage einen Hint, in dem etwas genauer erklärt wird, wie ihr vorgehen müsst. 
 
-
-- Class: text
+- Class: figure
   Output: Dann fangen wir mal an...
+  Figure: timer_start.R
+  FigureType: new
+
 
 - Class: cmd_question
   Output: Erstellt einen Vektor mit den Zahlen 1,2 und 3. 
@@ -138,17 +140,26 @@
   AnswerTests: omnitest(correctExpr='sixteen <- which(age<=16)')
   Hint: Die Funktion hierfür heisst 'which()'. Ihr schreibt also 'sixteen <- which(age >=16)'.
 
+
 - Class: cmd_question
   Output: Nun, da wir wissen wen wir nicht mehr in unserem Ursprungsvektor 'age' haben möchten, können wir fortfahren und die Personen entfernen. Der 'neue' Vektor 'age' sollte dann nicht mehr die Personen beinhalten.
   CorrectAnswer: age <- age[-sixteen]
   AnswerTests: omnitest(correctExpr='age <- age[-sixteen]')
   Hint: Genauso wie wir bestimmte Werte eines Vektors aufrufen können, können wir diese auch entfernen. Wir überschreiben 'age', das sieht so aus 'age <- age[-sixteen]'. 
 
+
 - Class: text
   Output: Zugegeben, das war nicht ganz einfach. Man bekommt Routine mit der Zeit. Immer wenn das Stichwort "entfernen" fällt, denkt automatisch an das Minuszeichen ("-"). 
 
-- Class: text
+- Class: figure
   Output: Well done, ihr habt es geschafft! Auch wenn ihr nicht alles auf Anhieb wusstet, das ist überhaupt kein Problem. Wer soll sich auch von jetzt auch nachher die ganzen Funktionen merken?  Wie so oft lautet das Motto Übung macht den Meister. Ihr werdet schnell merken, wie ihr bei bestimmten Aufgaben besser werdet. 
+  Figure: timer_stop.R
+  FigureType: new
+
+- Class: figure
+  Output: Hier kommt deine Kennung. Drücke Enter und schicke sie mir über den Befehl email(from='',code='')
+  Figure: checkCode.R
+  FigureType: new
 
 
 
