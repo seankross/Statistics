@@ -21,5 +21,5 @@ for(i in 1:1000){
     }
 rm(list=".Random.seed", envir=globalenv())
 kennung <- paste0(sample(validCodes,1),time_string)
-print(paste0("Dein Code: ",kennung))
+print(paste0("Deine Kennung: ",kennung))
 

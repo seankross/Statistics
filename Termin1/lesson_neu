@@ -11,7 +11,10 @@
     einen Großteil der Fragen beantworten können. Wenn ihr die Antwort nicht wisst,
     könnt ihr über "play()" pausieren und selbst versuchen die Lösung zu finden. Wenn das ohne Erfolg ist, dann findet ihr zu jeder Frage einen Hint, in dem etwas genauer erklärt wird, wie ihr vorgehen müsst.
 
-
+- Class: figure
+  Output: Dann fangen wir mal an...
+  Figure: timer_start.R
+  FigureType: new
 
 - Class: cmd_question
   Output: Erstellt einen Vektor mit den Zahlen 1,2 und 3.
@@ -24,16 +27,16 @@
   Output: Erstellt nun bitte einen Vektor mit zehn 1en, zehn 2en und zehn 3en.. Versucht das mithilfe einer Funktion, also bitte nicht alle Zahlen eingeben.
   CorrectAnswer: rep(c(1,2,3),each=10)
   AnswerTests: omnitest(correctExpr='rep(c(1,2,3),each=10)')
-  Hint: "Glücklicherweise können wir uns das Tippen sparen, hierfür gibt es eine Funktion, die uns die Arbeit weitgehend abnimmt. Wir werden im Laufe des Semesters noch mehr über Funktionen lernen, aber vorerst verwenden wir sie einfach. Zurück zu
+  Hint: "Glücklicherweise k?nnen wir uns das Tippen sparen, hierfür gibt es eine   Funktion, die uns die Arbeit weitgehend abnimmt. Wir werden im Laufe des Semesters noch mehr über Funktionen lernen, aber vorerst verwenden wir sie einfach. Zurück zu
 unserem Vektor, Die Funktion 'rep' steht für repeat. Möchten wir die Zahlen 1
     und 2 jeweils 5-mal wiederholen, schreiben wir 'rep(c(1,2),each=5)'. Wir sagen
-    R: Nimm die Zahl 1, und schreibe sie 5 mal, nimm dann die Zahl 2 und schreibe sie 5 mal. Die Lösung hier also wäre 'rep(c(1,2,3),each=10)'."
+    R: Nimm die Zahl 1, und schreibe sie 5 mal, nimm dann die Zahl 2 und schreibe sie 5 mal. Die Lösung hier also wäre 'rep(c(1,2,3),each=10)'.""
 
 - Class: cmd_question
   Output: Soweit so gut. Was nun, wenn wir damit weiterrechnen möchten? Also z.B jede
     Zahl um einen Wert erhöhen? (Warum auch immer das von Interesse sein sollte).
     Es ist lästig, jedes Mal aufs Neue den Vektor hinschreiben zu müssen, daher speichert
-    den Vektor in eine Variable namens 'y' ab. 
+    den Vektor in eine Variable namens 'y' ab.
   CorrectAnswer: y <- rep(c(1,2,3),each=10)
   AnswerTests: omnitest(correctExpr='y <- rep(c(1,2,3),each=10)')
   Hint: Das funktioniert über den sog. assignment-Operator '<-'. Wenn man die Zahl
@@ -214,11 +217,6 @@ unserem Vektor, Die Funktion 'rep' steht für repeat. Möchten wir die Zahlen 1
   AnswerTests: omnitest(correctExpr='age <- age[-sixteen]')
   Hint: Genauso wie wir bestimmte Werte eines Vektors aufrufen können, können wir
     diese auch entfernen. Wir überschreiben 'age', das sieht so aus 'age <- age[-sixteen]'.
-    
-- Class: figure
-  Output: Dann fangen wir mal an...
-  Figure: timer_start.R
-  FigureType: new
 
 - Class: text
   Output: Zugegeben, das war nicht ganz einfach. Man bekommt Routine mit der Zeit.
