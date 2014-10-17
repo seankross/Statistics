@@ -1,1 +1,1 @@
-time_needed <- round(as.numeric(difftime(Sys.time(),start,units="mins")),2)
+time_string <- paste0(start,gsub(":","",substr(Sys.time(),12,20)))

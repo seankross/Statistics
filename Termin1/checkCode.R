@@ -19,6 +19,7 @@ validCodes <- vector("character",length=1000)
 for(i in 1:1000){
     validCodes[i] <- generateCode()
     }
-rm(list=".Random.seed", envir=globalenv()) 
-print(paste0("Dein Code: ",sample(validCodes,1)))
+rm(list=".Random.seed", envir=globalenv())
+kennung <- paste0(sample(validCodes,1),time_string)
+print(paste0("Dein Code: ",kennung))
 

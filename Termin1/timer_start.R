@@ -1,2 +1,2 @@
 options(swirl_is_fun=FALSE)
-start <- Sys.time()
+start <- gsub(":","",substr(Sys.time(),12,20))
