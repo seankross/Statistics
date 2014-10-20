@@ -13,72 +13,72 @@
   Output: Wenn wir also einzelne Vektoren vorliegen haben, können wir diese zu einem Data Frame umformen. Wir müssen sie dafür zunächst spaltenweise zusammenfügen.
 
 - Class: cmd_question
-  Output: Ihr sehr in der Arbeitsumgebung oben rechts zwei Vektoren namens 'age' und 'sex', die wir über eine Erhebung unter Studenten erhalten haben. Fügt beide Vektoren spaltenweise zusammen und speichert das Ergebnis in ein Objekt namens 'mat'.
+  Output: In der Arbeitsumgebung oben rechts seht ihr zwei Vektoren namens 'age' und 'sex', die wir über eine Erhebung unter Studenten erhalten haben. Füge beide Vektoren spaltenweise zusammen und speichere das Ergebnis in ein Objekt namens 'mat'.
   CorrectAnswer: mat <- cbind(age,sex)
   AnswerTests: omnitest(correctExpr='mat <- cbind(age,sex)')
   Hint: "Wir möchten 'Columns' 'verBINDen', das geht über den Befehl 'cbind()'. Das Ergebnis hier lautet: mat <- cbind(age,sex)."
 
 - Class: cmd_question
-  Output: Sehr schön, lasst euch 'mat' nun in der Konsole anzeigen.
+  Output: Sehr schön, lasse dir nun 'mat' in der Konsole anzeigen.
   CorrectAnswer: mat
   AnswerTests: omnitest(correctExpr='mat')
-  Hint: Gebt einfach mat ein und drückt Enter.
+  Hint: Gib einfach mat ein und drücke Enter.
 
 - Class: cmd_question
-  Output: Ok, das sieht doch schon gut aus. Leider sind wir noch nicht ganz am Ende. 'mat' ist noch kein Data Frame, sondern eine Matrix. Seht selbst und tippt class(mat) ein.
+  Output: Ok, das sieht doch schon gut aus. Leider sind wir noch nicht ganz am Ende. 'mat' ist noch kein Data Frame, sondern eine Matrix. Tippe class(mat) ein.
   CorrectAnswer: class(mat)
   AnswerTests: omnitest(correctExpr='class(mat)')
   Hint: Bitte class(mat) eingeben und Enter drücken.
 
 - Class: cmd_question
-  Output: Na und? könnte man sich jetzt fragen. Naja, mit Data Frames lässt es sich einfach etwas angenehmer arbeiten als mit Objekten vom Typ 'matrix'. Wir wandeln jetzt 'mat' in einen Data Frame um und speichern das Ergebnis in 'df' ab. Der Befehl zur Umwandlung einer Matrix in einen Data Frame lautet as.data.frame().
+  Output: " 'Na und?' könnte man sich jetzt fragen. Naja, mit Data Frames lässt es sich einfach etwas angenehmer arbeiten als mit Objekten vom Typ 'matrix'. Wir wandeln jetzt 'mat' in einen Data Frame um und speichern das Ergebnis in 'df' ab. Der Befehl zur Umwandlung einer Matrix in einen Data Frame lautet as.data.frame()."
   CorrectAnswer: df <- as.data.frame(mat)
   AnswerTests: omnitest(correctExpr='df <- as.data.frame(mat)')
   Hint: Der Funktion as.data.frame() müssen wir die Matrix, also 'mat' übergeben und das ganze dann in ein neues Objekt abspeichern, so, df <- as.data.frame(mat).
 
 
 - Class: text
-  Output: Wir haben unsere Daten nun in einem Format, mit dem wir verschiedene Dinge bequem berechnen können. Um euch zu vergewissern, dass es sich jetzt auch tatsächlich um einen Data Frame handelt, könnt ihr einfach oben rechts in der Arbeitsumgebung schauen. Dort sollte ein kleiner blauer Button vor 'df' stehen. Alternativ könnt ihr auch wieder class(df) eingeben. 
+  Output: Wir haben unsere Daten nun in einem Format, mit dem wir verschiedene Dinge bequem berechnen können. Zur Vergewisserung, dass es sich jetzt auch tatsächlich um einen Data Frame handelt, kannst du einfach oben rechts in der Arbeitsumgebung schauen. Dort sollte ein kleiner blauer Button vor 'df' stehen. Alternativ kannst du auch wieder class(df) eingeben. 
 
 - Class: cmd_question
-  Output: Zu Beginn ist es gut die Dimensionen zu kennen, wie viele Zeilen und Spalten der Datensatz also besitzt. Das geht mithilfe der dim()-Funktion. Gebt nun dim(df) ein.
+  Output: Zu Beginn ist es gut die Dimensionen zu kennen, wie viele Zeilen und Spalten der Datensatz also besitzt. Das geht mithilfe der dim()-Funktion. Gib nun dim(df) ein.
   CorrectAnswer: dim(df)
   AnswerTests: omnitest(correctExpr='dim(df)')
   Hint: dim(df) eingeben und Enter drücken
 
 - Class: cmd_question
-  Output: Ach, fast hätte ich es vergessen. Wir sollten vielleicht noch die Spaltennamen ändern. Bei vielen Variablen wird das schnell unübersichtlich. Was war doch gleich X2? Bitte gebt dazu folgendes ein, names(df) <- c("age","sex"). So werden die (Spalten)namen überschrieben.
+  Output: Ach, fast hätte ich es vergessen. Wir sollten vielleicht noch die Spaltennamen ändern. Bei vielen Variablen wird das schnell unübersichtlich. Was war doch gleich X2? Bitte gib dazu folgendes ein, names(df) <- c("age","sex"). So werden die (Spalten)namen überschrieben.
   CorrectAnswer: names(df) <- c("age","sex")
   AnswerTests: omnitest(correctExpr='names(df) <- c("age","sex")')
   Hint: names(df) <- c("age","sex") und Enter drücken
 
 - Class: cmd_question
-  Output: Wir lassen uns die Spalte 1, also das Alter ('age') nun einfach mal anzeigen in der Konsole. Benutzt hierzu das Dollar-Zeichen ('$'). 
+  Output: Wir lassen uns die Spalte 1, also das Alter ('age') nun einfach mal anzeigen in der Konsole. Benutze hierzu das Dollar-Zeichen ('$'). 
   CorrectAnswer: df$age
   AnswerTests: omnitest(correctExpr='df$age')
-  Hint: Erinnert euch daran, wie man bei einem Data Frame bestimmte Spalten aufrufen kann. Einfach Name des Datensatz + $ + Name der Spalte, hier also df$age. 
+  Hint: Erinnere dich daran, wie man bei einem Data Frame bestimmte Spalten aufrufen kann. Einfach Name des Datensatz + $ + Name der Spalte, hier also df$age. 
 
 
 - Class: cmd_question
-  Output: Die Variable 'sex' im Datensatz ist bislang noch nicht als kategoriale Variable gekennzeichnet. Außerdem wäre es doch schön, wenn wir statt 0 und 1 'm' und 'w' stehen hätten. Wandelt bitte die Variable 'sex' mittels der Funktion factor(...,labels=c(...)) um und überschreibt sie. 
+  Output: Die Variable 'sex' im Datensatz ist bislang noch nicht als kategoriale Variable gekennzeichnet. Außerdem wäre es doch schön, wenn wir statt 0 und 1 'm' und 'w' stehen hätten. Wandele bitte die Variable 'sex' mittels der Funktion factor(...,labels=c(...)) um und überschreibe sie. 
   CorrectAnswer: df$sex <- factor(df$sex,labels=c("m","w"))
   AnswerTests: omnitest(correctExpr='df$sex <- factor(df$sex,labels=c("m","w"))')
   Hint: So sollte es aussehen, df$sex <- factor(df$sex,labels=c("m","w")). Wenn die 0 zu einem 'm' werden soll und die 1 zu einem 'w', dann muss 'm' zuerst angegeben werden. 
 
 - Class: cmd_question
-  Output: Das erste Ziel ist es immer sich ein schnellen Überblick über die Daten zu verschaffen, so eine Art Summary. Erfreulicherweise gibt es hierfür die Funktion summary(), der man den ganzen Datensatz übergeben kann und die einem eben eine summary über die Variablen gibt. Versucht es selbst und schaut euch den Output an
+  Output: Das erste Ziel ist es immer sich ein schnellen Überblick über die Daten zu verschaffen, so eine Art Summary. Erfreulicherweise gibt es hierfür die Funktion summary(), der man den ganzen Datensatz übergeben kann und die einem eben eine summary über die Variablen gibt. Versuche es selbst und schau dir den Output an
   CorrectAnswer: summary(df)
   AnswerTests: omnitest(correctExpr='summary(df)')
-  Hint: Tippt summary(df) ein und bestätigt mit Enter.
+  Hint: Tippe summary(df) ein und bestätige mit Enter.
 
 - Class: text
-  Output: Prima, wie ihr seht hat R erkannt, dass es sich bei der Variable 'sex' um eine kategoriale Variable handelt uns es wurde glücklicherweise nicht der Mittelwert etc. berechnet, sondern lediglich eine kleine Häufigkeitstabelle erstellt.
+  Output: Prima, wie du siehst hat R erkannt, dass es sich bei der Variable 'sex' um eine kategoriale Variable handelt uns es wurde glücklicherweise nicht der Mittelwert etc. berechnet, sondern lediglich eine kleine Häufigkeitstabelle erstellt.
 
 - Class: cmd_question
-  Output: Wie lautet der Median der Variable 'age'? Gebt die Zahl bitte ohne Kommastellen ein
+  Output: Wie lautet der Median der Variable 'age'? Gib die Zahl bitte ohne Kommastellen ein
   CorrectAnswer: 24
   AnswerTests: omnitest(correctExpr='24')
-  Hint: Die Summary gibt euch neben einigen hilfreichen Kennwerten auch den Median aus. Der Median liegt hier bei 24.
+  Hint: Die Summary gibt dir neben einigen hilfreichen Kennwerten auch den Median aus. Der Median liegt hier bei 24.
 
 - Class: mult_question
   Output: Moment mal, was sagt uns doch gleich der Median?
@@ -93,7 +93,7 @@
   Output: Mit which(df$age==1000) können wir uns die Zeile ausgeben lassen, in der sich die Person befindet. 
   
 - Class: cmd_question
-  Output: Lasst euch diese Zeile anzeigen
+  Output: Lass dir diese Zeile anzeigen
   CorrectAnswer: df[which(df$age==1000),]
   AnswerTests: any_of_exprs('df[which(df$age==1000),]', 'df[96,]')
   Hint: "Der Zugriff auf bestimmte Zeilen bzw. Spalten ähnelt dem bei Vektoren. Wir benötigen die eckigen Klammern ([]). Allerdings muss unterschieden werden zwischen Zeilen und Spalten. Dafür verwendet man das Komma innerhalb der eckigen Klammern. Alles was davor steht bezieht sich auf Zeilen, danach auf Spalten. Die erste Zeile ruft man so auf: df[1,], die erste Spalte hingegen so: df[,1]. Für unser Beispiel müssen wir eingeben: df[96,]"
@@ -106,10 +106,10 @@
   AnswerTests: omnitest(correctVal= 'männlich')
 
 - Class: cmd_question
-  Output: Versucht nun die Person, also die Zeile 96, aus dem Datensatz zu entfernen. 'df' sollte danach eine Zeile weniger enthalten.
+  Output: Versuche nun die Person, also die Zeile 96, aus dem Datensatz zu entfernen. 'df' sollte danach eine Zeile weniger enthalten.
   CorrectAnswer: df <- df[-96,]
   AnswerTests: any_of_exprs('df[-which(df$age==1000),]', 'df[-96,]')
-  Hint: "An welches Zeichen solltet ihr denken wenn das Wort entfernen fällt? Richtig: das Minuszeichen". Hier schreiben wir also: df <- df[-96,]"
+  Hint: "An welches Zeichen solltest du denken wenn das Wort 'entfernen' fällt? Richtig: das Minuszeichen. Hier schreiben wir also: df <- df[-96,]."
 
 
 

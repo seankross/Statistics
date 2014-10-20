@@ -3,7 +3,7 @@
 # the user's working directory and thus be accessible to them
 # throughout the lesson.
 
-
+options(encoding="UTF-8")
 set.seed(123765)
 sex <- ifelse(runif(120)<.5,0,1)
 age <- floor(rnorm(120,22,3))

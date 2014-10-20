@@ -14,10 +14,16 @@ generateCode <- function(length=10)
     return(code)
 }
 
+#543234
+#768912
+#123885
+#434112
+#577990
+#317842
 set.seed(543234)
-validCodes <- vector("character",length=1000)
+validCodes6 <- vector("character",length=1000)
 for(i in 1:1000){
-    validCodes[i] <- generateCode()
+    validCodes6[i] <- generateCode()
     }
 rm(list=".Random.seed", envir=globalenv())
 kennung <- paste0(sample(validCodes,1),time_string)
