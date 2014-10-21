@@ -21,9 +21,9 @@ generateCode <- function(length=10)
 #577990
 #317842
 set.seed(543234)
-validCodes6 <- vector("character",length=1000)
+validCodes <- vector("character",length=1000)
 for(i in 1:1000){
-    validCodes6[i] <- generateCode()
+    validCodes[i] <- generateCode()
     }
 rm(list=".Random.seed", envir=globalenv())
 kennung <- paste0(sample(validCodes,1),time_string)
