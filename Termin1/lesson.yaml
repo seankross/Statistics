@@ -189,8 +189,7 @@
     das Ergebnis bitte in den Vektor 'sixteen'.
   CorrectAnswer: sixteen <- which(age<=16)
   AnswerTests: omnitest(correctExpr='sixteen <- which(age<=16)')
-  Hint: Die Funktion hierfuer heisst 'which()'. Es heisst also 'sixteen <- which(age
-    >=16)'.
+  Hint: Die Funktion hierfuer heisst 'which()'. Es heisst also 'sixteen <- which(age<=16)'.
 
 - Class: cmd_question
   Output: Nun, da wir wissen wen wir nicht mehr in unserem Ursprungsvektor 'age' haben
