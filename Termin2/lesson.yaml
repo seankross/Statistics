@@ -30,7 +30,7 @@
   Output: Wir ihr seht, beinhaltet der Datensatz 4 Variablen mit insgesamt 220 observations. D.h. es haben 220 Personen an diesem Experiment teilgenommen. In der ersten Variable 'rt' stehen Reaktionszeiten (in ms), die mithilfe eines Laborexperimentes erfasst worden sind. Von jeder Person gibt es natuerlich nicht nur eine Reaktionszeit, sondern mehrere. In der Variable 'rt' steht aber schon der Mittelwert aller Reaktionszeiten einer Person.
 
 - Class: text
-  Output: Naja, Reaktionszeiten an sich sind eher uninteressant wenn man nicht bestimmte Variablen variiert. Nehmen wir alle Personen sollten vor Beginn des Experimentes eine Tasse Kaffee trinken. Die eine Gruppe bekam jedoch (unwissend) koffein-freien Kaffee. Untersucht wurde, ob sich ein Unterschied in den Reaktionsgeschwindigkeiten zeigte. Die Variable 'cond' gbit uns an, ob die Personen normalen Kaffee oder koffeinfreien Kaffee getrunken hat. 
+  Output: Naja, Reaktionszeiten an sich sind eher uninteressant wenn man nicht bestimmte Variablen variiert. Nehmen wir alle Personen sollten vor Beginn des Experimentes eine Tasse Kaffee trinken. Die eine Gruppe bekam jedoch (unwissend) koffein-freien Kaffee. Untersucht wurde, ob sich ein Unterschied in den Reaktionsgeschwindigkeiten zeigte. Die Variable 'cond' gbit uns an, ob die Person normalen Kaffee oder koffeinfreien Kaffee getrunken hat. 
 
 - Class: cmd_question
   Output: Die Daten liegen vor, aber wir muessen erst einige Veraenderungen vornehmen. Fangen wir mit der Variable 'cond' an. Aendere den Namen der Variable zu dem Namen 'koffein'. Das geht mithilfe von colnames. Bitte gib colnames(df)[2] <- "koffein" ein.  
@@ -76,7 +76,7 @@
 
 
 - Class: cmd_question
-  Output: Die Variable mood ist vom Typ character. Das siehst du wenn du str(df) aufrufst. Fuer R sind Zahlen die in Anfuehrungszeichen stehen keine Zahlen mit denen man rechnen kann, sondern Woerter. Das bringt uns aber nicht weiter. Wir benoetigen die Zahlen innerhalb der Anfuehrungszeichen. Wir koennen die Variable umwandeln ueber den Befehl as.numeric(). Versucht die Variable mithilfe der Funktion umzuwandeln
+  Output: Die Variable mood ist vom Typ character. Das siehst du wenn du str(df) aufrufst. Fuer R sind Zahlen, die in Anfuehrungszeichen stehen keine Zahlen mit denen man rechnen kann, sondern Woerter. Das bringt uns aber nicht weiter. Wir benoetigen die Zahlen innerhalb der Anfuehrungszeichen. Wir koennen die Variable umwandeln ueber den Befehl as.numeric(). Versucht die Variable mithilfe der Funktion umzuwandeln
   CorrectAnswer: df$mood <- as.numeric(df$mood)
   AnswerTests: omnitest(correctExpr='df$mood <- as.numeric(df$mood)')
   Hint: "Wir wollen die alte Variable ueberschreiben, sodass die Neue vom Typ numeric ist"
