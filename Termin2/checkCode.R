@@ -20,7 +20,7 @@ generateCode <- function(length=10)
 #434112
 #577990
 #317842
-set.seed(543234)
+set.seed(768912)
 validCodes <- vector("character",length=1000)
 for(i in 1:1000){
     validCodes[i] <- generateCode()

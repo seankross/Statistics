@@ -7,120 +7,178 @@
   Version: 2.2.16
   
 - Class: text
-  Output: Heute soll sich alles um Datensätze drehen, in R auch 'Data Frames' genannt. Wir hatten in der letzten Stunde gelernt, dass Data Frames eine Art Zusammensetzung mehrerer Vektoren sind. Jede Spalte ist ein eigener Vektor.
+  Output: Heute soll sich alles um Datensaetze drehen, in R auch 'Data Frames' genannt. Wir hatten in der letzten Stunde gelernt, dass Data Frames eine Art Zusammensetzung mehrerer Vektoren sind. Jede Spalte und Zeile kann als eigener Vektor aufgefasst werden. In dieser Uebung werdet ihr auch die ein oder andere neue Funktion kennenlernen
 
 - Class: text
-  Output: Wenn wir also einzelne Vektoren vorliegen haben, können wir diese zu einem Data Frame umformen. Wir müssen sie dafür zunächst spaltenweise zusammenfügen.
+  Output: Ich würde euch bitten zum Aufrufen einzelner Spalten das Dollar-Zeichen zu verwenden und nicht den anderen Weg mit den eckigen Klammern.  
 
-- Class: cmd_question
-  Output: In der Arbeitsumgebung oben rechts seht ihr zwei Vektoren namens 'age' und 'sex', die wir über eine Erhebung unter Studenten erhalten haben. Füge beide Vektoren spaltenweise zusammen und speichere das Ergebnis in ein Objekt namens 'mat'.
-  CorrectAnswer: mat <- cbind(age,sex)
-  AnswerTests: omnitest(correctExpr='mat <- cbind(age,sex)')
-  Hint: "Wir möchten 'Columns' 'verBINDen', das geht über den Befehl 'cbind()'. Das Ergebnis hier lautet: mat <- cbind(age,sex)."
-
-- Class: cmd_question
-  Output: Sehr schön, lasse dir nun 'mat' in der Konsole anzeigen.
-  CorrectAnswer: mat
-  AnswerTests: omnitest(correctExpr='mat')
-  Hint: Gib einfach mat ein und drücke Enter.
-
-- Class: cmd_question
-  Output: Ok, das sieht doch schon gut aus. Leider sind wir noch nicht ganz am Ende. 'mat' ist noch kein Data Frame, sondern eine Matrix. Tippe class(mat) ein.
-  CorrectAnswer: class(mat)
-  AnswerTests: omnitest(correctExpr='class(mat)')
-  Hint: Bitte class(mat) eingeben und Enter drücken.
-
-- Class: cmd_question
-  Output: " 'Na und?' könnte man sich jetzt fragen. Naja, mit Data Frames lässt es sich einfach etwas angenehmer arbeiten als mit Objekten vom Typ 'matrix'. Wir wandeln jetzt 'mat' in einen Data Frame um und speichern das Ergebnis in 'df' ab. Der Befehl zur Umwandlung einer Matrix in einen Data Frame lautet as.data.frame()."
-  CorrectAnswer: df <- as.data.frame(mat)
-  AnswerTests: omnitest(correctExpr='df <- as.data.frame(mat)')
-  Hint: Der Funktion as.data.frame() müssen wir die Matrix, also 'mat' übergeben und das ganze dann in ein neues Objekt abspeichern, so, df <- as.data.frame(mat).
-
+- Class: figure
+  Output: Dann fangen wir mal an...
+  Figure: timer_start.R
+  FigureType: new
 
 - Class: text
-  Output: Wir haben unsere Daten nun in einem Format, mit dem wir verschiedene Dinge bequem berechnen können. Zur Vergewisserung, dass es sich jetzt auch tatsächlich um einen Data Frame handelt, kannst du einfach oben rechts in der Arbeitsumgebung schauen. Dort sollte ein kleiner blauer Button vor 'df' stehen. Alternativ kannst du auch wieder class(df) eingeben. 
+  Output: Wenn wir also einzelne Vektoren vorliegen haben, koennen wir diese zu einem Data Frame umformen. Wir muessen sie dafuer zunaechst spaltenweise zusammenfuegen.
 
 - Class: cmd_question
-  Output: Zu Beginn ist es gut die Dimensionen zu kennen, wie viele Zeilen und Spalten der Datensatz also besitzt. Das geht mithilfe der dim()-Funktion. Gib nun dim(df) ein.
-  CorrectAnswer: dim(df)
-  AnswerTests: omnitest(correctExpr='dim(df)')
-  Hint: dim(df) eingeben und Enter drücken
+  Output: In der Arbeitsumgebung oben rechts seht ihr einen Data Frame names 'df'. Einen Ueberblick ueber die Struktur des Datensatzes bekommen wir mit str(). 
+  CorrectAnswer: str(df)
+  AnswerTests: omnitest(correctExpr='str(df)')
+  Hint: "str steht für structure und der Befehlt lautet str(df)"
+
+- Class: text
+  Output: Wir ihr seht, beinhaltet der Datensatz 4 Variablen mit insgesamt 220 observations. D.h. es haben 220 Personen an diesem Experiment teilgenommen. In der ersten Variable 'rt' stehen Reaktionszeiten (in ms), die mithilfe eines Laborexperimentes erfasst worden sind. Von jeder Person gibt es natuerlich nicht nur eine Reaktionszeit, sondern mehrere. In der Variable 'rt' steht aber schon der Mittelwert aller Reaktionszeiten einer Person.
+
+- Class: text
+  Output: Naja, Reaktionszeiten an sich sind eher uninteressant wenn man nicht bestimmte Variablen variiert. Nehmen wir alle Personen sollten vor Beginn des Experimentes eine Tasse Kaffee trinken. Die eine Gruppe bekam jedoch (unwissend) koffein-freien Kaffee. Untersucht wurde, ob sich ein Unterschied in den Reaktionsgeschwindigkeiten zeigte. Die Variable 'cond' gbit uns an, ob die Personen normalen Kaffee oder koffeinfreien Kaffee getrunken hat. 
 
 - Class: cmd_question
-  Output: Ach, fast hätte ich es vergessen. Wir sollten vielleicht noch die Spaltennamen ändern. Bei vielen Variablen wird das schnell unübersichtlich. Was war doch gleich X2? Bitte gib dazu folgendes ein, names(df) <- c("age","sex"). So werden die (Spalten)namen überschrieben.
-  CorrectAnswer: names(df) <- c("age","sex")
-  AnswerTests: omnitest(correctExpr='names(df) <- c("age","sex")')
-  Hint: names(df) <- c("age","sex") und Enter drücken
+  Output: Die Daten liegen vor, aber wir muessen erst einige Veraenderungen vornehmen. Fangen wir mit der Variable 'cond' an. Aendere den Namen der Variable zu dem Namen 'koffein'. Das geht mithilfe von colnames. Bitte gib colnames(df)[2] <- "koffein" ein.  
+  CorrectAnswer: colnames(df)[2] <- "koffein"
+  AnswerTests: omnitest(correctExpr='colnames(df)[2] <- "koffein"')
+  Hint: Bitte colnames(df)[2] <- "koffein" eingeben und Enter druecken.
 
 - Class: cmd_question
-  Output: Wir lassen uns die Spalte 1, also das Alter ('age') nun einfach mal anzeigen in der Konsole. Benutze hierzu das Dollar-Zeichen ('$'). 
-  CorrectAnswer: df$age
-  AnswerTests: omnitest(correctExpr='df$age')
-  Hint: Erinnere dich daran, wie man bei einem Data Frame bestimmte Spalten aufrufen kann. Einfach Name des Datensatz + $ + Name der Spalte, hier also df$age. 
+  Output: Lass dir die Namen der Variablen des Datensatzes anzeigen, also die Namen der Spalten. Schreibe hierfür colnames(df).
+  CorrectAnswer: colnames(df)
+  AnswerTests: omnitest(correctExpr='colnames(df)')
+  Hint: Verwendet hierzu wieder die colnames-Funktion.
+
+- Class: text
+  Output: Schoen, das hat geklappt! Weiter gehts...
+
+- Class: cmd_question
+  Output: Aendere die Variable 'koffein' in eine Variable vom Typ factor und vergebe Wertelabels. Alle 1er bekommen das label "ja", alle 2er das Label "nein".  
+  CorrectAnswer: df$koffein <- factor(df$koffein,labels=c("ja","nein"))
+  AnswerTests: omnitest(correctExpr='df$koffein <- factor(df$koffein,labels=c("ja","nein"))')
+  Hint: Hierfuer gibt es die Funktion factor(). Der Funktion wird der Vektor, der umgewandelt werden soll uebergeben und zusaetzlich das Argument 'labels'. Last but not least muessen wir die Spalte 'koffein' im Datensatz ueberschreiben.
+
+- Class: text
+  Output: Hat es geklappt? Oft ist es hilfreich, sich die ersten paar Zeilen eines Datensatzes anzuschauen. Man moechte nicht alle (in diesem Fall 220) Zeilen sehen.
+
+- Class: cmd_question
+  Output: Gebe hierfuer bitte head(df) ein. 
+  CorrectAnswer: head(df)
+  AnswerTests: omnitest(correctExpr='head(df)')
+  Hint: Bitte head(df) eingeben und Enter druecken.
+
+- Class: text
+  Output: Das sieht gut aus. Wir sehen standardmaeßig die ersten sechs Zeilen und die Variable 'koffein' enthaelt nun keine 1en und 2en mehr, sondern stattdessen die Labels "ja" und "nein". 
+
+- Class: cmd_question
+  Output: Zusaetzlich wurde noch das Geschlecht der Personen erhoben. Auch bei dieser Variable handelt es sich um eine nominalskalierte Variable. Wir sollten auch diese also in einen factor umwandeln. 1 steht fuer "w" und 2 fuer "m". Auf geht's
+  CorrectAnswer: df$sex <- factor(df$sex,labels=c("w","m"))
+  AnswerTests: omnitest(correctExpr='df$sex <- factor(df$sex,labels=c("w","m"))')
+  Hint: "Der Befehl sieht ganz aehnlich zu dem Voherigen aus"
+
+- Class: text
+  Output: Soweit so gut. In dem Experiment wurde noch die momentane Stimmung erhoben. Es koennte ja sein, dass moegliche Unterschiede in den Reaktionszeiten dadurch entstanden sind, dass Koffein zu einer besseren/schlechteren Stimmung gefuehrt hat. Dann waere nicht das Koffein der Grund fuer die bessere/schlechtere Leistung sondern die Stimmung. Die Stimmung wurde durch 3 Fragen mit jeweils 5-stufigem Antwortformat erhoben. Die Variable 'mood' enthaelt den Mittelwert ueber die insgesamt 3 Fragen zur momentanen Stimmung. 
 
 
 - Class: cmd_question
-  Output: Die Variable 'sex' im Datensatz ist bislang noch nicht als kategoriale Variable gekennzeichnet. Außerdem wäre es doch schön, wenn wir statt 0 und 1 'm' und 'w' stehen hätten. Wandele bitte die Variable 'sex' mittels der Funktion factor(...,labels=c(...)) um und überschreibe sie. 
-  CorrectAnswer: df$sex <- factor(df$sex,labels=c("m","w"))
-  AnswerTests: omnitest(correctExpr='df$sex <- factor(df$sex,labels=c("m","w"))')
-  Hint: So sollte es aussehen, df$sex <- factor(df$sex,labels=c("m","w")). Wenn die 0 zu einem 'm' werden soll und die 1 zu einem 'w', dann muss 'm' zuerst angegeben werden. 
+  Output: Die Variable mood ist vom Typ character. Das siehst du wenn du str(df) aufrufst. Fuer R sind Zahlen die in Anfuehrungszeichen stehen keine Zahlen mit denen man rechnen kann, sondern Woerter. Das bringt uns aber nicht weiter. Wir benoetigen die Zahlen innerhalb der Anfuehrungszeichen. Wir koennen die Variable umwandeln ueber den Befehl as.numeric(). Versucht die Variable mithilfe der Funktion umzuwandeln
+  CorrectAnswer: df$mood <- as.numeric(df$mood)
+  AnswerTests: omnitest(correctExpr='df$mood <- as.numeric(df$mood)')
+  Hint: "Wir wollen die alte Variable ueberschreiben, sodass die Neue vom Typ numeric ist"
 
 - Class: cmd_question
-  Output: Das erste Ziel ist es immer sich ein schnellen Überblick über die Daten zu verschaffen, so eine Art Summary. Erfreulicherweise gibt es hierfür die Funktion summary(), der man den ganzen Datensatz übergeben kann und die einem eben eine summary über die Variablen gibt. Versuche es selbst und schau dir den Output an
+  Output: Man sollte sich angewoehnen immer zu ueberpruefen, ob die eingegebenen Befehle auch das richtige bewirkt haben. In diesem Fall moechten wir pruefen, ob es sich nun bei der Variable mood um eine numerische Variable handelt. Das geht mit is.numeric(). 
+  CorrectAnswer: is.numeric(df$mood)
+  AnswerTests: omnitest(correctExpr='is.numeric(df$mood)')
+  Hint: "Ist die Variable mood vom Typ 'numerisch'? is.numeric(df$mood)"
+
+- Class: cmd_question
+  Output: Rufe bitte die Zeilen 85, 132, 138, 139 und 150 des Datensatzes auf. 
+  CorrectAnswer: df[c(85,132,138,139,150),]
+  AnswerTests: omnitest(correctExpr='df[c(85,132,138,139,150),]')
+  Hint: "Erinnere dich an das Komma innerhalb der eckigen Klammern. Hier moechten wir Zeilen, also lassen wir den Platz nach dem Komma leer."
+
+
+- Class: mult_question
+  Output: Faellt dir etwas auf?
+  AnswerChoices: die Reaktionszeiten sind implausibel; die Mittelwerte der Variable mood koennen nicht stimmen; nichts besonderes 
+  CorrectAnswer: die Mittelwerte der Variable mood koennen nicht stimmen
+  AnswerTests: omnitest(correctVal= 'die Mittelwerte der Variable mood koennen nicht stimmen')
+
+- Class: text
+  Output: Hier muss ein Fauxpas passiert sein! Der Mittelwert einer Person darf maximal 5 betragen. Denn die drei Fragen wurden mithilfe einer 5-stufigen Skala erhoben. 
+
+- Class: cmd_question
+  Output: Ersetze alle Werte der Variable 'mood', die groeßer als 5 sind, durch den Wert 5. 
+  CorrectAnswer: df[c(85,132,138,139,150),"mood"] <- 5
+  AnswerTests: any_of_exprs('df[c(85,132,138,139,150),"mood"] <- 5', 'df[c(85,132,138,139,150),4] <- 5','df[c(85,132,138,139,150),4] <- c(5,5,5,5,5)')
+  Hint: "Hier moechten wir Zeilen einer bestimmten Spalte ersetzen. df[c(85,132,138,139,150),4] <- ?"
+
+- Class: text
+  Output: Wir haben bislang die drei Variablen koffein, sex und mood etwas aufbereitet. Jetzt sollten wir einen Blick auf die Reaktionszeiten werfen.
+
+- Class: cmd_question
+  Output: Lass' dir alle Zeilen ausgeben, bei der die Variable 'rt' einen missing value (NA) hat? Verwende hierzu die Funktion is.na(). Wie gesagt, du kannst jederzeit pausieren mit play() und erst einmal testen wie man die Funktion verwendet.
+  CorrectAnswer: which(is.na(df$rt))
+  AnswerTests: any_of_exprs('which(is.na(df$rt))', 'which(is.na(df[,1]))')
+  Hint: "Erinnere dich an die Funktion which(). which() sagt uns, an welchen Stellen eines logischen Vektors (TRUE/FALSE) sich die TRUE-Werte befinden. Und is.na() liefert uns einen solchen Vektor."
+
+- Class: cmd_question
+  Output: Wir moechten alle Daten der Personen loeschen, von denen wir keine Reaktionszeiten haben. Verwendet dafuer den eben oben genutzten Befehl mit which. Auf geht's...
+  CorrectAnswer: df <- df[-which(is.na(df$rt)),]
+  AnswerTests: any_of_exprs('df <- df[-which(is.na(df$rt)),]', 'df <- df[-which(is.na(df[,1])),]')
+  Hint: "Wir kennen die Zeilen, die entfernt werden sollen. Sobald das Stichwort entfernen faellt, denken wir an das Minuszeichen. Bitte nimm dir ein paar Minuten Zeit und 'spiele' etwas in der Konsole mit play() um auf die Loesung zu kommen"
+
+- Class: cmd_question
+  Output: Ein kurzer Check, ob das funktioniert hat. Lasse dir die Anzahl der Zeilen des Datensatzes ausgeben.
+  CorrectAnswer: nrow(df)
+  AnswerTests: omnitest(correctExpr='nrow(df)')
+  Hint: "Wie erhaelt man die '*N*umber of *ROW*s'?"
+
+- Class: text
+  Output: Nach der ganzen Datenaufbereitung kommen wir jetzt zur Statistik. Fuer einen schnellen ueberblick eignet sich die summary-Funktion.
+
+- Class: cmd_question
+  Output: Verwende die Funktion summary() fuer den Datensatz
   CorrectAnswer: summary(df)
   AnswerTests: omnitest(correctExpr='summary(df)')
-  Hint: Tippe summary(df) ein und bestätige mit Enter.
-
-- Class: text
-  Output: Prima, wie du siehst hat R erkannt, dass es sich bei der Variable 'sex' um eine kategoriale Variable handelt uns es wurde glücklicherweise nicht der Mittelwert etc. berechnet, sondern lediglich eine kleine Häufigkeitstabelle erstellt.
+  Hint: Bitte summary(df) eingeben und Enter druecken.
 
 - Class: cmd_question
-  Output: Wie lautet der Median der Variable 'age'? Gib die Zahl bitte ohne Kommastellen ein
-  CorrectAnswer: 24
-  AnswerTests: omnitest(correctExpr='24')
-  Hint: Die Summary gibt dir neben einigen hilfreichen Kennwerten auch den Median aus. Der Median liegt hier bei 24.
+  Output: Wie viele weibliche und maennliche Teilnehmer sind in jeder der beiden Bedingungen (ohne Koffein, mit Koffein)? Verwendet table() zur Loesung
+  CorrectAnswer: table(df$sex,df$koffein)
+  AnswerTests: any_of_exprs('table(df$sex,df$koffein)', 'table(df$koffein,df$sex)','table(df[,2],df[,3])','table(df[,3],df[,2])')
+  Hint: "Die table-Funktion funktioniert auch mit mehreren Variablen, die durch Kommas voneinander getrennt werden muessen"
+
+- Class: cmd_question
+  Output: Unterscheiden sich Maenner und Frauen hinsichtlich ihrer durchschnittlichen momentanen Stimmung? ueberpruefe das mithilfe der aggregate-Funktion. Verwende zum Aufruf der Spalten bitte das Dollarzeichen.
+  CorrectAnswer: aggregate(df$mood,list(sex=df$sex),mean)
+  AnswerTests: omnitest(correctExpr='aggregate(df$mood,list(sex=df$sex),mean)')
+  Hint: "Der Funktion sagen wir zunaechst, von welcher Variable wir Kennwerte berechnen wollen. Danach geben wir an, in Abhaengigkeit welcher anderen Variable das geschehen soll. Und am Schluss muessen wir der Funktion noch mitteilen, welcher Kennwert uns interessiert. Alles in allem dann so: aggregate(df$mood,list(sex=df$sex),mean)."
+
+- Class: text
+  Output: Es besteht ein Unterschied in den Mittelwerten von ca. '0.07'. Das kann auf Zufall beruhen oder aber ein tatsaechlicher Unterschied sein. Zum jetzigen Zeitpunkt lassen wir es so im Raum stehen. Wir kommen zu einem spaeteren Zeitpunkt auf dieses Problem zurueck und werden es mithilfe der Statistik loesen.
+
+- Class: cmd_question
+  Output: Sind Personen, die koffeinhaltigen Kaffee konsumiert haben schneller oder langsamer als solche, die koffein-freien Kaffee getrunken haben? Lassen wir uns die Mittelwerte ausgeben
+  CorrectAnswer: aggregate(df$rt,list(koffein=df$koffein),mean)
+  AnswerTests: omnitest(correctExpr='aggregate(df$rt,list(koffein=df$koffein),mean)')
+  Hint: "Der Befehl aehnelt sehr dem Vorherigen"
+
 
 - Class: mult_question
-  Output: Moment mal, was sagt uns doch gleich der Median?
-  AnswerChoices: welcher Wert am häufigsten vorkommt; welcher Wert die Zahlenreihe in zwei gleich große Hälften teilt; welcher Wert den Durchschnitt darstellt 
-  CorrectAnswer: welcher Wert die Zahlenreihe in zwei gleich große Hälften teilt
-  AnswerTests: omnitest(correctVal= 'welcher Wert die Zahlenreihe in zwei gleich große Hälften teilt')
+  Output: "Ohne statistische Absicherung, nur ausgehend von den beiden Mittelwerten: Wurde unsere Hypothese, dass Personen, die Koffein konsumiert haben schneller reagieren, bestaetigt?"
+  AnswerChoices: ja; nein; keine Aussage moeglich 
+  CorrectAnswer: nein
+  AnswerTests: omnitest(correctVal= 'nein')
 
 - Class: text
-  Output: Das stimmt doch etwas nicht, warum ist denn die maximale Altersangabe 1000? Da hat wohl jemand (absichtlich) einen unsinnigen Wert angegeben. Die Person müssen wir leider entfernen aus unserem Datensatz.
-
-- Class: text
-  Output: Mit which(df$age==1000) können wir uns die Zeile ausgeben lassen, in der sich die Person befindet. 
+  Output: Nein, im Gegenteil! Es zeigt sich sogar ein entgegengesetzter Effekt. Es scheint so zu sein, dass Personen durch den Konsum von Koffein langsamer werden.  
   
-- Class: cmd_question
-  Output: Lass dir diese Zeile anzeigen
-  CorrectAnswer: df[which(df$age==1000),]
-  AnswerTests: any_of_exprs('df[which(df$age==1000),]', 'df[96,]')
-  Hint: "Der Zugriff auf bestimmte Zeilen bzw. Spalten ähnelt dem bei Vektoren. Wir benötigen die eckigen Klammern ([]). Allerdings muss unterschieden werden zwischen Zeilen und Spalten. Dafür verwendet man das Komma innerhalb der eckigen Klammern. Alles was davor steht bezieht sich auf Zeilen, danach auf Spalten. Die erste Zeile ruft man so auf: df[1,], die erste Spalte hingegen so: df[,1]. Für unser Beispiel müssen wir eingeben: df[96,]"
+- Class: figure
+  Output: Einmal tief durchatmen, du bist nun am Ende angekommen! Im Folgenden wird dir wieder die Kennung fuer diesen Termin genannt.
+  Figure: timer_stop.R
+  FigureType: new
 
-
-- Class: mult_question
-  Output: Ist die Person männlich oder weiblich?
-  AnswerChoices: männlich; weiblich  
-  CorrectAnswer: männlich
-  AnswerTests: omnitest(correctVal= 'männlich')
-
-- Class: cmd_question
-  Output: Versuche nun die Person, also die Zeile 96, aus dem Datensatz zu entfernen. 'df' sollte danach eine Zeile weniger enthalten.
-  CorrectAnswer: df <- df[-96,]
-  AnswerTests: any_of_exprs('df[-which(df$age==1000),]', 'df[-96,]')
-  Hint: "An welches Zeichen solltest du denken wenn das Wort 'entfernen' fällt? Richtig: das Minuszeichen. Hier schreiben wir also: df <- df[-96,]."
-
-
-
-
-
-
-
-
-
-
-
+- Class: figure
+  Output: "Hier kommt deine Kennung. Druecke Enter und schicke mir die Kennung ueber das Online-Portal (https://www.soscisurvey.de/stats/). Das Passwort ist dasselbe wie fuer den Moodle-Zugang."
+  Figure: checkCode.R
+  FigureType: new
 
 
 
